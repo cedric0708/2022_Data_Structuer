@@ -13,7 +13,7 @@ typedef struct listnode {
 //노드 생성
 node* createnode(int data) {
 	node* newnode = (node*)malloc(sizeof(node));
-
+	//노드 초기화
 	newnode->data = data;
 	newnode->next = NULL;
 	newnode->prev = NULL;
@@ -21,11 +21,12 @@ node* createnode(int data) {
 	return newnode;
 }
 
-//노드 삭제
+//(메모리 상에서만)노드 삭제
 void deletenode(node* node) {
 	free(node);
 }
 
+//노드 가져오기
 node* getnodeat(node* head, int index) {
 	node* horse = head;
 	int count = 0;
@@ -41,6 +42,7 @@ node* getnodeat(node* head, int index) {
 	return NULL;
 }
 
+//리스트 개수 반환
 int countnode(node* head) {
 	int count = 0;
 	node* horse = head;
@@ -53,12 +55,13 @@ int countnode(node* head) {
 	return count;
 }
 
+//노드 추가(append)
 void addnode(node** head, node* newnode) {
-
+	//리스트가 존재하지 않는 경우
 	if ((*head) == NULL) {
 		*head = newnode;
 	}
-
+	//리스트가 존재하는 경우
 	else {
 		node* horse = (*head);
 
@@ -71,18 +74,19 @@ void addnode(node** head, node* newnode) {
 	}
 }
 
+//노드 삽입
 void insertafter(node* current, node* newnode) {
-
+	//Headlist로 삽입하는 경우
 	if (current->prev == NULL && current->next == NULL) {
 		current->next = newnode;
 		newnode->prev;
 	}
-	else {
+	else {  //Taillist로 삽입하는 경우
 		if (current->next == NULL) {
 			current->next = newnode;
 			newnode->prev = current;
 		}
-		else {
+		else {  //중간에 삽입하는 경우
 			current->next->prev = newnode;
 			newnode->prev = current;
 			newnode->next = current->next;
@@ -91,6 +95,7 @@ void insertafter(node* current, node* newnode) {
 	}
 }
 
+//노드 삭제
 void removenode(node** head, node* remove) {
 
 	if (*head == remove) {
