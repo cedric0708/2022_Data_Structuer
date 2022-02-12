@@ -97,15 +97,15 @@ void insertafter(node* current, node* newnode) {
 
 //노드 삭제
 void removenode(node** head, node* remove) {
-
+	//Headlist
 	if (*head == remove) {
 		*head = remove->next;
 	}
-
+	//When remove has next link to go
 	if (remove->next != NULL) {
 		remove->next->prev = remove->prev;
 	}
-
+	//When remove has prev link to go
 	if (remove->prev != NULL) {
 		remove->prev->next = remove->next;
 	}
