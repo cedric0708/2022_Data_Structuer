@@ -1,7 +1,3 @@
-# 리스트
-
-### 노드 작업
-
 #pragma warning(disable:4996)
 #include <stdio.h>
 #include <string.h>
