@@ -1,4 +1,4 @@
-### My Answer
+<My Answer>
 
 #pragma warning(disable:4996)
 #include <stdio.h>
@@ -60,7 +60,7 @@ int main() {
     return 0;
 }
 
-### 교수님 해설
+<교수님 해설 일부>
 
 void screw(int X[][100], int N, M)
 {
