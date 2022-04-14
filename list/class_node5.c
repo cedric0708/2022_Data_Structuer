@@ -73,7 +73,7 @@ int main()
 
 	printf("Remove Group Name : ");
 	char d;
-	scanf("%c, &d");
+	scanf("%c", &d);
 	removegroup(h, t, d);
 	traverse(h, t);
 
