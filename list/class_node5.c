@@ -46,6 +46,18 @@ void removegroup(dlistnode* h, dlistnode* t, char g) {
 			removenode(p);
 	}
 }
+
+void traverseGroup(listNode* h, listNode* t, char g)
+{
+	listNode* p = h->next;
+	printf("group %c",g);
+	for (; p != T; p = p->next)
+		if(p->group == g)
+			printf(" [%d]", p->elem);
+	printf("\n");
+
+}
+
 void traverse(dlistnode* h, dlistnode* t) {
 	dlistnode* p = h->next;
 	printf(" elem  group\n============\n");
