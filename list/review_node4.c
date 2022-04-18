@@ -8,12 +8,12 @@ typedef struct listnode {
 	int elem;
 	char group;
 	struct listnode* prev, * next;
-}listnode;
+}listnode;//이중연결리스트
 
 void init(listnode* h, listnode* t) {
 	h->next = t;
 	t->prev = h;
-}
+}//헤더, 트레일러 생성 및 초기화
 
 void addnode(listnode* p, int e, char g) {
 	listnode* node = (listnode*)malloc(sizeof(listnode));
@@ -32,7 +32,7 @@ void add(listnode* h, int pos, int e, char g) {
 		p = p->next;
 
 	addnode(p, e, g);
-}
+}//노드 삽입
 
 void removenode(listnode* p) {
 	p->prev->next = p->next;
@@ -46,7 +46,7 @@ void removegroup(listnode* h, listnode* t, char g) {
 		if (p->group == g)
 			removenode(p);
 	}
-}
+}//그룹 삭제
 
 void traverse(listnode* h, listnode* t) {
 	listnode* p = h->next;
@@ -54,7 +54,7 @@ void traverse(listnode* h, listnode* t) {
 		printf(" %d %c\n", p->elem, p->group);
 	}
 	printf("\n");
-}
+}//출력
 
 
 
