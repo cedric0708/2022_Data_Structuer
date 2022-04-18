@@ -7,10 +7,10 @@
 typedef struct listnode {
 	int elem;
 	char group;
-	struct listnode* prev, *next;
+	struct listnode* prev, * next;
 }listnode;
 
-void init(listnode* h, listnode *t) {
+void init(listnode* h, listnode* t) {
 	h->next = t;
 	t->prev = h;
 }
@@ -28,7 +28,7 @@ void addnode(listnode* p, int e, char g) {
 void add(listnode* h, int pos, int e, char g) {
 	listnode* p = h;
 
-	for (int i = 0; i < pos; i++)
+	for (int i = 1; i <= pos; i++)
 		p = p->next;
 
 	addnode(p, e, g);
@@ -37,7 +37,7 @@ void add(listnode* h, int pos, int e, char g) {
 void removenode(listnode* p) {
 	p->prev->next = p->next;
 	p->next->prev = p->prev;
-	free(p);
+	
 }
 
 void removegroup(listnode* h, listnode* t, char g) {
@@ -48,7 +48,7 @@ void removegroup(listnode* h, listnode* t, char g) {
 	}
 }
 
-void traverse(listnode* h, listnode *t) {
+void traverse(listnode* h, listnode* t) {
 	listnode* p = h->next;
 	for (; p != t; p = p->next) {
 		printf(" %d %c\n", p->elem, p->group);
@@ -66,7 +66,7 @@ int main()
 	init(h, t);
 	srand(time(NULL));
 	char g[5] = { 'A', 'B', 'C', 'D', 'E' };
-	for (int i = 0; i < 10; i++) {
+	for (int i = 1; i <= 10; i++) {
 		int e = rand() % 100;
 		char c = g[rand() % 5];
 		add(h, i, e, c);
