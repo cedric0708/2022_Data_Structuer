@@ -7,15 +7,15 @@
 typedef struct setnode {
 	int elem;
 	struct setnode* prev, * next;
-}setnode;
+}setnode;//이중연결리스트
 
 typedef struct {
 	setnode* h;
-}setype;
+}setype;//헤더 포인터
 
 void init(setype* s) {
 	s->h = NULL;
-}
+}//초기화
 
 void addlast(setype* s, int e) {
 	setnode* node = (setnode*)malloc(sizeof(setnode));
@@ -31,7 +31,7 @@ void addlast(setype* s, int e) {
 		p->next=node;
 		node->prev = p;
 	}
-}
+}//맨 뒤에 삽입
 
 void traverse(setype* s) {
 	setnode* p = s->h;
@@ -43,7 +43,7 @@ void traverse(setype* s) {
 			printf(" %d", p->elem);
 	}	
 	printf("\n");
-}
+}//출력
 
 void unionset(setype* s1, setype* s2) {
 	setype* s;
@@ -79,7 +79,7 @@ void unionset(setype* s1, setype* s2) {
 	}
 
 	traverse(&s);
-}
+}//합집합
 
 void intersect(setype* s1, setype* s2) {
 	setype* s;
@@ -101,7 +101,7 @@ void intersect(setype* s1, setype* s2) {
 	}
 
 	traverse(&s);
-}
+}//교집합
 
 void subtract(setype* s1, setype* s2) {
 	setype* s;
@@ -129,7 +129,7 @@ void subtract(setype* s1, setype* s2) {
 	}
 
 	traverse(&s);
-}
+}//차집합
 
 int member(setype* s, int e) {
 	if (s->h == NULL)
@@ -149,7 +149,7 @@ int member(setype* s, int e) {
 				return 1;
 		}
 	}
-}
+}//원소 포함 여부
 
 int subset(setype* s1, setype* s2) {
 	if (s1->h == NULL)
@@ -167,7 +167,7 @@ int subset(setype* s1, setype* s2) {
 				return 0;
 		}
 	}
-}
+}//부분집합
 
 int main()
 {
