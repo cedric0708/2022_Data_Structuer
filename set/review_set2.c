@@ -65,6 +65,27 @@ listnode *unionset(listype* s1, listype* s2) {
 	}
 }
 
+listnode* intersect(listype* s1, listype* s2) {
+	listnode* p = s1->h;
+	listnode* q = s2->h;
+	listype* s;
+	init(&s);
+	listnode* ss = s->h;
+	if (p == NULL && q == NULL)
+		return 0;
+	else {
+		if (p->elem < q->elem)
+			return intersect(&(p->next), &q);
+		else if(p->elem>q->elem)
+			return intersect(&p, &(q->next));
+		else {
+			ss->elem = p->elem;
+			ss->next = intersect(&(p->next), &(q->next));
+		}
+		return ss;
+	}
+}
+
 void traverse(listype* l) {
 	listnode* p = l->h;
 
@@ -90,6 +111,7 @@ int main()
 	}
 
 	traverse(unionset(&s1, &s2));
+	traverse(intersect(&s1, &s2));
 
 	return 0;
 }
