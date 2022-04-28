@@ -51,6 +51,24 @@ char peek(stacktype* s) {
 	return s->data[s->top];
 }
 
+void dupilcate(stacktype* s) {
+	char temp = peek(s);
+	if (temp != -1)
+		push(s, temp);
+}
+
+void uprotate(stacktype* s, int m) {
+	int t = s->top;
+	if (n <= t + 1) {
+		char temp = s->data[t];
+		for (int i = 1; i < n; i++) {
+			s->data[t] = s->data[t - 1];
+			t--;
+		}
+		s->data[t] = temp;
+	}
+}
+
 void print(stacktype* s) {
 	for (int i = s->top; i >= 0; i--)
 		printf("%c", s->data[i]);
