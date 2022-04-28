@@ -59,9 +59,9 @@ void dupilcate(stacktype* s) {
 
 void uprotate(stacktype* s, int m) {
 	int t = s->top;
-	if (n <= t + 1) {
+	if (m <= t + 1) {
 		char temp = s->data[t];
-		for (int i = 1; i < n; i++) {
+		for (int i = 1; i < m; i++) {
 			s->data[t] = s->data[t - 1];
 			t--;
 		}
