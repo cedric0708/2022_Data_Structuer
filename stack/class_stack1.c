@@ -68,6 +68,19 @@ void uprotate(stacktype* s, int m) {
 		s->data[t] = temp;
 	}
 }
+void downrotate(stackType* s, int m)
+{
+    int t = s->top;
+    if(m <= t+1)
+    {
+        char temp = s->data[t-m+1];
+        for(int i = t-m+1; i < t; i++)
+            s->data[i] = s->data[i+1];
+       
+        s->data[t] = temp;
+    }
+}
+
 
 void print(stacktype* s) {
 	for (int i = s->top; i >= 0; i--)
