@@ -90,7 +90,7 @@ void print(stacktype* s) {
 
 int main()
 {
-	stacktype* s;
+	stacktype s;
 	init(&s);
 
 	pop(&s);
