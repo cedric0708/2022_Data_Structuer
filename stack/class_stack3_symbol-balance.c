@@ -70,10 +70,10 @@ int check(char str[]) {
 
 	for (int i = 0; i < m; i++) {
 		c = str[i];
-		if (c == '(' || '{' || '[') {
+		if (c == '(' || c=='{' || c=='[') {
 			push(&s, c);
 		}
-		else if (c == ')' || '}' || ']') {
+		else if (c == ')' || c=='}' || c==']') {
 			if (isempty(&s))
 				return 0;
 			else {
