@@ -43,6 +43,14 @@ char dequeue(queuetype* q) {
 	return q->queue[q->front];
 }
 
+char front(queuetype* q) {
+	if (isempty(q)) {
+		printf("EMPTY\n");
+		return -1;
+	}
+	return q->queue[(q->front+1)%N];
+}
+
 void print(queuetype* q) {
 
 	printf("Front pos : %d, Rear pos : %d\n", q->front, q->rear);
