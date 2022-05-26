@@ -49,6 +49,38 @@ int isExternal(Tree* t, int idx) {
 	return (2 * idx >= N) || (t->T[2 * idx] == 0 && t->T[2 * idx + 1] == 0);
 }
 
+int nodeIdx(Tree* t, char c) {
+	for (int i = 1; i < N; i++) {
+		if (t->T[i] == c)
+			return i;
+	}
+}
+
+int depth(int idx) {
+	if (isRoot(idx))
+		return 0;
+	else
+		return 1 + depth(parent(idx));
+}
+
+int maxs(int a, int b) {
+	if (a > b)
+		return a;
+	else
+		return b;
+}
+
+int height(Tree* t, int idx) {
+	int h;
+	if (isExternal(t, idx))
+		return 0;
+	else {
+		h = 0;
+		h = maxs(height(t, leftChild(idx)), height(t, rightChild(idx)));
+	}
+
+}
+
 void print(Tree* t) {
 	for (int i = 1; i < N; i++) {
 		printf("%c ", (t->T[i] == 0) ? '#' : t->T[i]);
@@ -72,7 +104,7 @@ int main() {
 	makeTree(&t, rightChild(5), 'I');
 	makeTree(&t, rightChild(7), 'J');
 	print(&t);
-
-
+	printf("Depth(I) : %d\n", depth(nodeIdx(&t, 'F')));
+	printf("Height(Tree) : %d\n", height(&t, 1));
 	return 0;
 }
