@@ -82,6 +82,17 @@ element evalExpr(TreeNode* root) {
 	return 0;
 }
 
+void printExpr(TreeNode* root) {
+	if (!isExternal(root)) {
+		printf("(");
+		printExpr(root->left);
+	}
+	print(root->data);
+	if (!isExternal(root)) {
+		printExpr(root->right);
+		printf(")");
+	}
+}
 
 int main() {
 
@@ -100,7 +111,7 @@ int main() {
 	printf("PreOrder Expr : "); preOrder(root); printf("\n");
 	printf("InOrder Expr : "); inOrder(root); printf("\n");
 	printf("PostOrder Expr : "); postOrder(root); printf("\n\n");
-
+	printf("InOrder Expr() : "); printExpr(root); printf("\n\n");
 	printf("Evaluated : %d\n", evalExpr(root));
 	
 	return 0;
