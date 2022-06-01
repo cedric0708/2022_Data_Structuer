@@ -3,6 +3,8 @@
 #include<stdlib.h>
 #include<string.h>
 
+int k;
+
 typedef struct TreeNode {
 	char elem;
 	struct TreeNode* parent, * left, * right;
@@ -50,7 +52,7 @@ int main() {
 	TreeNode* n2 = makeNode('B', NULL, n4, n5);
 	TreeNode* n1 = makeNode('A', NULL, n2, n3);
 
-	root = n1;
+	TreeNode *root = n1;
 	n8->parent = n9->parent = n5;
 	n6->parent = n7->parent = n3;
 	n4->parent = n5->parent = n2;
