@@ -4,6 +4,7 @@
 #include<string.h>
 
 typedef char element;
+int k;
 
 typedef struct TreeNode {
 	element data;
