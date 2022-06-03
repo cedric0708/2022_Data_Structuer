@@ -32,14 +32,28 @@ TreeNode* makeTree(TreeNode *root, int data) {
 	return root;
 }
 
-int getNodeCount(TreeNode* root) {
+int getNodeCount(TreeNode* root)
+{
+	int count = 0;
 
+	if (root != NULL)
+		count = 1 + getNodeCount(root->left) + getNodeCount(root->right);
+	return count;
 }
 
-int getLeafCount(TreeNode* root) {
+int getLeafCount(TreeNode* root)
+{
+	int count = 0;
 
+	if (root != NULL)
+	{
+		if (root->left == NULL && root->right == NULL)
+			return 1;
+		else
+			count = getLeafCount(root->left) + getLeafCount(root->right);
+	}
+	return count;
 }
-
 void preOrder(TreeNode* root) {
 	if (root != NULL) {
 		printf("%d ", root->data);
