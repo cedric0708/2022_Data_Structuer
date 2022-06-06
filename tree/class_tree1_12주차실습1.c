@@ -27,24 +27,51 @@ void foldersize(treenode* root) {
 
 
 int main() {
-
-	treenode *f[9];
-	f[4] = makenode(70, NULL, NULL);
-	f[5] = makenode(90, NULL, NULL);
-	f[7] = makenode(130, NULL, NULL);
-	f[8] = makenode(80, NULL, NULL);
-	f[6] = makenode(120, f[7], f[8]);
-	f[2] = makenode(30, f[4], f[5]);
-	f[3] = makenode(50, NULL, f[6]);
-	f[1] = makenode(20, f[2], f[3]);
-
+	
 	int n;
+	
+	treeNode*F4 = makenode(70, NULL, NULL);
+	treeNode*F5 = makenode(90, NULL, NULL);
+	treeNode*F2 = makenode(30, F4, F5);
+	
+	treeNode*F7 = makenode(130, NULL, NULL);
+	treeNode*F8 = makenode(80, NULL, NULL);
+	treeNode*F6 = makenode(120, F7, F8);
+	treeNode*F3 = makenode(50, NULL, F6);
+
+	treeNode*F1 = makenode(20, F2, F3);
 
 	scanf("%d", &n);
-	if (n <= 0 || n >= 9)
+	switch (n)
+	{
+	case 1:
+		folderSize(F1);
+		break;
+	case 2:
+		folderSize(F2);
+		break;
+	case 3:
+		folderSize(F3);
+		break;
+	case 4:
+		folderSize(F4);
+		break;
+	case 5:
+		folderSize(F5);
+		break;
+	case 6:
+		folderSize(F6);
+		break;
+	case 7:
+		folderSize(F7);
+		break;
+	case 8:
+		folderSize(F8);
+		break;
+	default:
 		printf("-1");
-	else
-		foldersize(f[n]);
+		break;
+	}
 
 	
 	return 0;
