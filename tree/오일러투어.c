@@ -1,72 +1,54 @@
 #pragma warning(disable:4996)
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-typedef char element;
 
-// 트리
-typedef struct TreeNode
-{
-	element data;
-	int kLeft,size;
-	struct TreeNode* left;
-	struct TreeNode* right;
+typedef struct treenode {
+	char data;
+	struct treenode* left, * right;
+}treenode;
 
-}TreeNode;
-
-TreeNode* makeNode(element data, TreeNode* left, TreeNode* right)
-{
-	TreeNode* node = (TreeNode*)malloc(sizeof(TreeNode));
-	node->data = data;
+treenode* makenode(char c, treenode* left, treenode* right) {
+	treenode* node = (treenode*)malloc(sizeof(treenode));
+	node->data = c;
 	node->left = left;
 	node->right = right;
-	node->kLeft = node->size = 0;
-
 	return node;
 }
 
-int isExternal(TreeNode* node)
-{
-	return (node->left == NULL && node->right == NULL);
+int isexternal(treenode* node) {
+	return (node->left == NULL) && (node->right == NULL);
 }
 
-void eulerTour(TreeNode* root)
-{
+void eulertour(treenode* root) {
 	printf("%c ", root->data);
-	if (!isExternal(root))
-	{
-		eulerTour(root->left);
 
+	if (!isexternal(root)) {
+		eulertour(root->left);
 	}
 	printf("%c ", root->data);
 
-
-	if (!isExternal(root))
-	{
-		eulerTour(root->right);
+	if (!isexternal(root)) {
+		eulertour(root->right);
 	}
 	printf("%c ", root->data);
 
 }
 
+int main() {
 
+	treenode* n9 = makenode('I', NULL, NULL);
+	treenode* n8 = makenode('H', NULL, NULL);
+	treenode* n7 = makenode('G', NULL, NULL);
+	treenode* n6 = makenode('F', NULL, NULL);
+	treenode* n5 = makenode('E', n8, n9);
+	treenode* n4 = makenode('D', NULL, NULL);
+	treenode* n3 = makenode('C', n6, n7);
+	treenode* n2 = makenode('B', n4, n5);
+	treenode* n1 = makenode('A', n2, n3);
 
-int main()
-{
-	TreeNode* n9 = makeNode('I', NULL, NULL);
-	TreeNode* n8 = makeNode('H', NULL, NULL);
-	TreeNode* n7 = makeNode('G', NULL, NULL);
-	TreeNode* n6 = makeNode('F', NULL, NULL);
-	TreeNode* n5 = makeNode('E', n8, n9);
-	TreeNode* n4 = makeNode('D', NULL, NULL);
-	TreeNode* n3 = makeNode('C', n6, n7);
-	TreeNode* n2 = makeNode('B', n4, n5);
-	TreeNode* n1 = makeNode('A', n2, n3);
+	eulertour(n1);
 
-	TreeNode* root = n1;
-
-	
-
-	eulerTour(root); 
 	return 0;
 }
