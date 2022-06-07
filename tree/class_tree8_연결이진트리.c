@@ -57,14 +57,9 @@ TreeNode* sibling(TreeNode* v)
 		return p->left;
 }
 
-int isExternal(TreeNode* v)
-{
-	return (v->left == NULL && v->right == NULL);
-}
-
 int isInternal(TreeNode* v)
 {
-	return (v->left != NULL && v->right != NULL);
+	return (v->left != NULL || v->right != NULL);
 }
 
 char setElement(TreeNode* v, char e)
