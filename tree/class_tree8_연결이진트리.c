@@ -38,6 +38,49 @@ TreeNode* parent(TreeNode* v) {
 		return v->parent;
 }
 
+TreeNode* leftChild(TreeNode* v)
+{
+	return v->left;
+}
+
+TreeNode* rightChild(TreeNode* v)
+{
+	return v->right;
+}
+
+TreeNode* sibling(TreeNode* v)
+{
+	TreeNode* p = v->parent;
+	if (p->left == v)
+		return p->right;
+	else
+		return p->left;
+}
+
+int isExternal(TreeNode* v)
+{
+	return (v->left == NULL && v->right == NULL);
+}
+
+int isInternal(TreeNode* v)
+{
+	return (v->left != NULL && v->right != NULL);
+}
+
+char setElement(TreeNode* v, char e)
+{
+	v->elem = e;
+	return e;
+}
+
+void swapElements(TreeNode* v, TreeNode* w)
+{
+	char tmp = v->elem;
+	v->elem = w->elem;
+	w->elem = tmp;
+	return;
+}
+
 int main() {
 
 	TreeNode* n9 = makeNode('I', NULL, NULL, NULL);
