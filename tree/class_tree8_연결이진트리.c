@@ -73,7 +73,6 @@ void swapElements(TreeNode* v, TreeNode* w)
 	char tmp = v->elem;
 	v->elem = w->elem;
 	w->elem = tmp;
-	return;
 }
 
 int main() {
