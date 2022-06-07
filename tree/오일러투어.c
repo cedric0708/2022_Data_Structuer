@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int k;
 typedef char element;
 
 // 트리
@@ -29,17 +28,6 @@ TreeNode* makeNode(element data, TreeNode* left, TreeNode* right)
 int isExternal(TreeNode* node)
 {
 	return (node->left == NULL && node->right == NULL);
-}
-
-void visitLeft(TreeNode* root)
-{
-	k++;
-	root->kLeft = k;
-}
-
-void visitRight(TreeNode* root)
-{
-	root->size = k - root-> kLeft + 1;
 }
 
 void eulerTour(TreeNode* root)
