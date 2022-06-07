@@ -75,8 +75,8 @@ int height(Tree* t, int idx) {
 	if (isExternal(t, idx))
 		return 0;
 	else {
-		h = 0;
-		h = maxs(height(t, leftChild(idx)), height(t, rightChild(idx)));
+		h = max1(height(t, leftChild(idx)), height(t, rightChild(idx)));
+		return h + 1;
 	}
 
 }
