@@ -3,8 +3,6 @@
 #include<stdlib.h>
 #include<string.h>
 
-int k;
-
 typedef struct TreeNode {
 	char elem;
 	struct TreeNode* parent, * left, * right;
